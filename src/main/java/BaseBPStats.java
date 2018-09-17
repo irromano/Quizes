@@ -1,3 +1,4 @@
+
 // BaseBPStats.java
 // The program calculates statistics for a baseball player
 import java.util.Scanner;
@@ -11,12 +12,15 @@ public class BaseBPStats {
 	private int HR; // Home Runs
 	private int R; // Runs
 	private int BB; // Walks
-	
+
+	public BaseBPStats() {
+	}
+
 	// Getters:
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -24,42 +28,72 @@ public class BaseBPStats {
 	public void setAB(int aB) {
 		this.AB = aB;
 	}
+
 	public void setH(int h) {
 		this.H = h;
 	}
+
 	public void setTwoB(int twoB) {
 		this.twoB = twoB;
 	}
+
 	public void setThreeB(int threeB) {
 		this.threeB = threeB;
 	}
+
 	public void setHR(int hR) {
 		this.HR = hR;
 	}
+
 	public void setR(int r) {
 		this.R = r;
 	}
+
 	public void setBB(int bB) {
 		this.BB = bB;
 	}
-	
-	
+
 	public double BA() { // calculates Batting Average
-		return ((double) (this.H) / this.AB);
-	}
-	public double OBP() { // On base percentage
-		return ((double) (this.H + this.BB) / (this.AB + this.BB));
-	}
-	public double SLG() { // Slugging Percentage
-		return ((double) (this.H + 2 * this.twoB + 3 * this.threeB + 4 * this.HR) / this.AB);
-	}
-	public double OBS() { // On base + slugging percentage
-		return (this.OBP() + this.SLG());
-	}
-	public int TB() { // Total bases
-		return (this.H + 2 * this.twoB + 3 * this.threeB + 4 * this.HR);
+		int h = H;
+		int ab = AB;
+		double ba = (double) h / ab;
+		return ba;
 	}
 
-	
+	public double OBP() { // On base percentage
+		int h = H;
+		int bb = BB;
+		int ab = AB;
+		double OBP = (double) (h + bb) / (ab + bb);
+		return OBP;
+	}
+
+	public double SLG() { // Slugging Percentage
+		int h = H;
+		int twoB = this.twoB;
+		int threeB = this.threeB;
+		int hr = HR;
+		int ab = AB;
+		double SLG = (double) (h + 2 * twoB + 3 * threeB + 4 * hr) / ab;
+
+		return SLG;
+	}
+
+	public double OBS() { // On base + slugging percentage
+		double obp = this.OBP();
+		double slg = this.SLG();
+		double OBS = obp + slg;
+
+		return OBS;
+	}
+
+	public int TB() { // Total bases
+		int h = H;
+		int twoB = this.twoB;
+		int threeB = this.threeB;
+		int hr = HR;
+		int TB = h + 2 * twoB + 3 * threeB + 4 * hr;
+		return TB;
+	}
 
 }

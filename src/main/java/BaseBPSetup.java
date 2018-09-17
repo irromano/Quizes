@@ -33,6 +33,7 @@ public class BaseBPSetup {
 		System.out.println("Please enter Walks: \n"); // input
 		newPlayer.setBB(input.nextInt()); // reads Walks
 
+		
 		// Prints Player Stats
 		System.out.println("%s's Baseball Stats: " + newPlayer.getName());
 		System.out.println("Batting Average: " + newPlayer.BA());
